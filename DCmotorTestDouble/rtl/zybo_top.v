@@ -15,7 +15,7 @@ output        MOTOR_DIR2
 
 );
 
-parameter DEAD_TIME = 26'd124999999;
+parameter DEAD_TIME = 27'd124999999;
 
 motor_controller #(.DEAD_TIME(DEAD_TIME)) motor_controller1 (
   .CLK(CLK),

@@ -13,7 +13,7 @@ output        MOTOR_EN2
 
 );
 
-motor_controller #(.DEAD_TIME(26'd124999999)) motor_controller1 (
+motor_controller #(.DEAD_TIME(27'd124999999)) motor_controller1 (
   .CLK(CLK),
   .RST(RST),
   .SW(SW0),
