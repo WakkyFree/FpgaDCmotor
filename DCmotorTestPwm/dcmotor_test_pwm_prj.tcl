@@ -1,7 +1,7 @@
 #*****************************************************************************************
-# This tcl for Vivado (TM) v2020.1 (64-bit)
+# Vivado (TM) v2020.1 (64-bit)
 #
-# dcmotor_test_double_prj.tcl: Tcl script for re-creating project 'dcmotor_test_double'
+# dcmotor_test_pwm_prj.tcl: Tcl script for re-creating project 'dcmotor_test_double'
 #
 # by Wakky
 #
@@ -24,7 +24,7 @@ if { [info exists ::user_project_name] } {
 }
 
 variable script_file
-set script_file "dcmotor_test_double_prj.tcl"
+set script_file "dcmotor_test_pwm_prj.tcl"
 
 # Help information for this script
 proc print_help {} {
@@ -85,6 +85,7 @@ set obj [current_project]
 set_property -name "default_lib" -value "xil_defaultlib" -objects $obj
 set_property -name "enable_vhdl_2008" -value "1" -objects $obj
 set_property -name "ip_cache_permissions" -value "disable" -objects $obj
+set_property -name "ip_output_repo" -value "$proj_dir/${_xil_proj_name_}.cache/ip" -objects $obj
 set_property -name "mem.enable_memory_map_generation" -value "1" -objects $obj
 set_property -name "part" -value "xc7z010clg400-1" -objects $obj
 set_property -name "sim.central_dir" -value "$proj_dir/${_xil_proj_name_}.ip_user_files" -objects $obj
@@ -99,7 +100,7 @@ if {[string equal [get_filesets -quiet sources_1] ""]} {
 # Set 'sources_1' fileset object
 set obj [get_filesets sources_1]
 set files [list \
- [file normalize "${origin_dir}/rtl/motor_controller.v"] \
+ [file normalize "${origin_dir}/rtl/motor_controller_pwm.v"] \
  [file normalize "${origin_dir}/rtl/zybo_top.v"] \
 ]
 add_files -norecurse -fileset $obj $files
@@ -113,6 +114,7 @@ add_files -norecurse -fileset $obj $files
 # Set 'sources_1' fileset properties
 set obj [get_filesets sources_1]
 set_property -name "top" -value "zybo_top" -objects $obj
+set_property -name "top_auto_set" -value "0" -objects $obj
 
 # Create 'constrs_1' fileset (if not found)
 if {[string equal [get_filesets -quiet constrs_1] ""]} {
@@ -132,4 +134,6 @@ set_property -name "file_type" -value "XDC" -objects $file_obj
 
 # Set 'constrs_1' fileset properties
 set obj [get_filesets constrs_1]
+set_property -name "target_constrs_file" -value "[file normalize "$origin_dir/xdc/dcmotor.xdc"]" -objects $obj
 set_property -name "target_part" -value "xc7z010clg400-1" -objects $obj
+set_property -name "target_ucf" -value "[file normalize "$origin_dir/xdc/dcmotor.xdc"]" -objects $obj

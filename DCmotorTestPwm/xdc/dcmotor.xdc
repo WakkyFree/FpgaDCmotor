@@ -28,3 +28,11 @@ set_property PACKAGE_PIN Y18 [get_ports MOTOR_EN2]
 set_property PACKAGE_PIN Y19 [get_ports MOTOR_DIR2]
 set_property IOSTANDARD LVCMOS33 [get_ports MOTOR_DIR2]
 set_property IOSTANDARD LVCMOS33 [get_ports MOTOR_EN2]
+
+set_property PACKAGE_PIN P15 [get_ports SW1]
+set_property IOSTANDARD LVCMOS33 [get_ports SW1]
+set_property PACKAGE_PIN P16 [get_ports BTN1]
+set_property IOSTANDARD LVCMOS33 [get_ports BTN1]
+
+set_property PACKAGE_PIN W13 [get_ports SW2]
+set_property IOSTANDARD LVCMOS33 [get_ports SW2]
